@@ -16,20 +16,9 @@ export const LeftNavbarComponent = ({ routes }) => {
     const [open, setOpen] = useState(f);
     const [sideBarLinks,setsideBarLinks]=useState(routes);
     const handleLogout=async()=>{
-        // const data=await userLogout();
-        // console.log({data});
-        // dispatch({
-        //     type: USER_LOGOUT
-        // });
         dispatch({
             type: RESET_STATE
         });
-        // try {
-        //     await navigate("/")
-        //     //window.location.reload();
-        // } catch (err) {
-        //     console.log(err);
-        // }
     }
     return (
         <div className="  w-full lg:w-1/5"  >

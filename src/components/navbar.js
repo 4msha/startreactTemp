@@ -11,7 +11,6 @@ const { store } = getStore(storage);
 
 export const NavbarComponent = () => {
     const state=store.getState();
- //   console.log(state);
     const dispatch=useDispatch();
     const[isAuth,setIsAuth]=useState(state.auth.isAuthenticated);
     const [toggle,setToggle]=useState(false);
@@ -19,19 +18,10 @@ export const NavbarComponent = () => {
     const [open, setOpen] = useState(pathname);
     const handleLogout=async()=>{
 
-        //  const data=await userLogout();
-        //  console.log({data});
-        // dispatch({
-        //     type: USER_LOGOUT,
-        // });
         dispatch({
             type: RESET_STATE
         });
-        // try{
-        //     await navigate("/");
-        // }catch{
-        //     console.log("error")
-        // }
+
     }
     return (
         <div className="flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg top-0 absolute z-50 w-full ">

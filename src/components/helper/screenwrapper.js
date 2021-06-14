@@ -1,30 +1,27 @@
 import React from 'react';
 import {LeftNavbarComponent} from "../leftNavbar";
-import {NavbarComponent} from "../navbar";
-import storage from 'localforage';
-import { getStore } from '../../common/reducer';
-const { store } = getStore(storage);
-
 
 export const ScreenWrapper = (props) => {
-    const state=store.getState();
     const {children} = props;
     const { pathname } = window.location;
+    console.log(pathname);
+    const items=pathname.split("/");
+    console.log({items});
     return (
         <div className="bg-blue-100">
-            <div className="  lg:flex ">
+            <div className="  ">
                 {
-                    (pathname.search("question")!==-1 || pathname==="/"||  pathname.search("documentation")!==-1 ||pathname.search("success")!==-1 || pathname.search("share")!==-1)?(
+                    (pathname.search("response")!==-1 || pathname.search("candidate")!==-1 || pathname.search("documentation")!==-1 ||pathname.search("success")!==-1 || pathname.search("question")!==-1 )?(
                         <div className="hidden">
-                            <NavbarComponent/>
                         </div>
                     ):(
 
-                    <div className=" lg:flex w-full">
-                        <LeftNavbarComponent {...props} />
-                    </div>
+                        <div className=" ">
+                            <LeftNavbarComponent {...props} />
+                        </div>
                     )
                 }
+
                 <div className="flex-1">{children}</div>
             </div>
         </div>

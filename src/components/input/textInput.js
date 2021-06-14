@@ -1,6 +1,6 @@
 import React from "react";
 
-export const  TextInput = ({ labelText,placeholder,suggestions, value,setValue,kwargs }) =>{
+export const  TextInput = ({ labelText,placeholder,suggestions, value,setValue,error }) =>{
 
     return(
         <div className='m-4 items-center '>
@@ -10,34 +10,24 @@ export const  TextInput = ({ labelText,placeholder,suggestions, value,setValue,k
             <div className='-mt-2'>
                 <input
                     value={value}
-                    className='w-full  py-2 px-3 text-gray-700 border border-gray-200 leading-tight focus:border-2 no-outline'
+                    className='w-full  py-2 px-3 text-gray-700 border border-gray-200  '
                     id={labelText}
                     onChange={(e)=> {
                         setValue(e.target.value)
                     }}
                     type='text'
                     placeholder={placeholder}
-                    {...kwargs} />
-                <div className={`${value?'':'hidden'} rounded shadow-md my-2 relative pin-t pin-l`}>
-                    {suggestions?(
-                        <ul className='list-reset'>
-                            <input className=' h-8 w-full no-outline px-2' placeholder='Search' />
-                            {(suggestions||[]).map((option=>(
-                                <li>
-                                    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-                                    <p
-                                        onKeyPress={()=>{}}
-                                        onClick={()=>{setValue(option.value)}}
-                                        className='p-2 block text-black hover:bg-grey-light cursor-pointer'
-                                    >
-                                        {option.label}
-                                    </p>
-                                </li>
-                            )))}
-                        </ul>
-                    ):null}
-                </div>
+                />
+
             </div>
+            {
+                error?(
+                    <p className="text-sm text-red-700">This field is required.</p>
+                ):(
+                    <div className="hidden">
+                    </div>
+                )
+            }
         </div>
     );
 }
